@@ -14,15 +14,6 @@ private:
 	vector<char> vertex;
 	vector<vector<adjVert>> adjList;
 
-	//dijkstra's algorithm variables
-	struct node {
-		adjVert vertex;
-		bool visited;
-		int distFromSrc;
-		node* prev;
-	};
-	vector<int> adjVerts;
-
 	int vertSize;
 public:
 	graph(char verts[], int nVerts) {
@@ -32,7 +23,7 @@ public:
 			vertex.push_back(verts[i]);
 		}
 	}
-	void createEdges(int x) {						// refer to a drawn grid consisting of 15 vertices to help understand the algorithm
+	void createEdges(int x) {						// refer to a drawn 5x3 grid consisting of 15 vertices to help understand the algorithm
 		int xHolder{ x - 1 };
 
 		adjVert v;
@@ -100,7 +91,7 @@ public:
 			xHolder = x - 1;
 		}
 	}
-	void adjEdges(int v) {
+	void adjVertices(int v) {
 		for (int i = 0; i < adjList[v].size(); i++)
 		{
 			cout << adjList[v][i].v << ", " << adjList[v][i].weight << endl;
@@ -112,9 +103,9 @@ int main()
 {
 	char verts[] = "ABCDEFGHIJKLMNO";
 
-	graph g(verts, 15);
-	g.createEdges(5);
-	g.adjEdges(7);
+	graph g(verts, 15);		// 15 is the num of vertices
+	g.createEdges(5);		// 5 is the width. This specific graph of 15 vertices will be 5x3
+	g.adjVertices(7);		// will get the adj
 
 	cin.get();
 	return 0;
